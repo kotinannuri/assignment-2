@@ -1,0 +1,180 @@
+1
+SELECT e.ename, job
+FROM EMP e
+WHERE (job = 'clerk');
+2
+SELECT e.ename,job
+FROM EMP e
+WHERE job = 'clerk' OR job ='manager';
+3
+SELECT 
+GETDATE() AS todaydate
+FROM EMP;
+
+4
+SELECT ename,sal
+FROM EMP e
+WHERE sal between 500 AND 1000;
+
+5
+SELECT ENAME,HIREDATE
+FROM EMP
+WHERE MONTH(HIREDATE)=12;
+
+6
+SELECT ename,sal
+FROM emp e
+WHERE sal NOT BETWEEN 1000 AND 2000;
+
+7
+SELECT ENAME,SAL
+FROM EMP
+WHERE SAL IN(800,950,3000,5000);
+
+8
+SELECT ENAME
+FROM EMP
+WHERE ENAME LIKE '_L%';
+
+9
+SELECT ENAME
+FROM EMP
+WHERE ENAME LIKE '_D%';
+
+10
+SELECT ENAME
+FROM EMP
+WHERE LEN(ENAME)=5;
+
+11
+SELECT ENAME
+FROM EMP
+WHERE ENAME LIKE'T%R';
+
+12
+SELECT ENAME
+FROM EMP
+WHERE ENAME LIKE 'A%';
+
+13
+SELECT ENAME,HIREDATE
+FROM EMP
+WHERE DAY(HIREDATE)<19;
+
+14
+SELECT ENAME,EMPNO
+FROM EMP 
+WHERE ENAME='JAMES';
+
+15
+SELECT ENAME,SAL
+FROM EMP
+WHERE ENAME='KING';
+
+16
+SELECT ENAME,DNAME,JOB
+FROM EMP,DEPT
+WHERE JOB = 'PRESIDENT';
+
+17
+SELECT ENAME,DNAME,JOB
+FROM EMP,DEPT
+WHERE JOB = 'MANAGER';
+
+18
+SELECT ENAME,EMPNO
+FROM EMP
+WHERE comm is not null
+UNION
+SELECT 'NA',EMPNO
+FROM JOBHIST
+WHERE enddate is not null;
+
+19
+SELECT ENAME,HIREDATE
+FROM EMP
+WHERE HIREDATE < '1-apr-1981';
+
+20
+sELECT ENAME,SAL
+FROM EMP
+WHERE ENAME IN('KING','BLAKE','FORD','SMITH');
+
+21
+SELECT ENAME,SAL
+FROM EMP
+WHERE ENAME IN('KING','BLAKE','FORD','SMITH');
+
+22
+SELECT ENAME,JOB,SAL 
+FROM EMP
+WHERE SAL<3500;
+
+23
+SELECT *
+FROM EMP
+WHERE JOB='CLERK';
+
+24
+SELECT ENAME,SAL,SAL*12 AS anualsal
+FROM EMP;
+
+25
+SELECT (sal*12)*0.2 as annualsal 
+ from emp
+where ename = 'ford'
+
+26
+select deptno, sum (sal) AS TOTAL
+from emp 
+group by deptno;
+
+27
+SELECT ename,sal
+FROM emp
+WHERE deptno=10 AND sal <1400;
+
+28
+select ename,empno,job,avg (sal) AS average
+from EMP e
+where job='MANAGER'
+GROUP BY ename,empno,job;
+
+29
+select ename,empno,job,sum (sal) AS total
+from EMP e
+where job='SALESMAN'
+GROUP BY ename,empno,job;
+
+30
+SELECT deptno,avg (sal) AS 'low avg salary'
+FROM emp
+GROUP BY deptno
+HAVING avg (sal)< (select avg (sal) from emp);
+
+31
+SELECT JOB,COUNT(JOB) AS NUMBER
+FROM EMP
+GROUP BY JOB;
+
+32
+select max(sal) as 'maxsal',job
+from emp
+where job='analyst'
+group by job;
+
+33
+SELECT 
+MAX(COMM) AS COMMISSION
+FROM EMP;
+
+34
+SELECT deptno,
+COUNT (deptno) AS count
+FROM EMP
+GROUP BY deptno;
+
+35
+SELECT ENAME
+FROM EMP
+WHERE ENAME LIKE'__l%';
